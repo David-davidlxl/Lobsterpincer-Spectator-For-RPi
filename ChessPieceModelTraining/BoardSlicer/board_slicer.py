@@ -17,6 +17,10 @@ import numpy as np
 import PIL.Image
 
 
+if not hasattr(PIL.Image, "Resampling"):
+    PIL.Image.Resampling = PIL.Image
+
+
 CHESSBOARDS_DIR = "./images/chessboards"
 TILES_DIR = "./images/tiles"
 USE_GRAYSCALE = False
@@ -79,9 +83,10 @@ def _img_filename_prefix(chessboard_img_path):
     :return: Part of the image filename that shows which piece is on which square
         (e.g. "RRqpBnNr-QKPkrQPK-PpbQnNB1-nRRBpNpk-Nqprrpqp-kKKbNBPP-kQnrpkrn-BKRqbbBp").
     """
-    # print(chessboard_img_path.split('\\'))
-    # return chessboard_img_path.split("/")[4][:-4]
-    return chessboard_img_path.split("\\")[2][:-4]
+    try:  # The computer running this program is on the Windows platform
+        return chessboard_img_path.split("\\")[2][:-4]
+    except IndexError:  # The computer running this program is on the Mac/Linux platform
+        return chessboard_img_path.split("/")[4][:-4]
 
 
 def createLetterFolders(img_save_dir):
