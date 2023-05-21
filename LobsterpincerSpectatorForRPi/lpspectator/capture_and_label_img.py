@@ -210,6 +210,9 @@ if __name__ == "__main__":
     import os
     import sys
 
+    if not os.path.exists("Captured Images"):
+        os.makedirs("Captured Images")
+
     print("Initializing the camera...")
     cap = start_camera()
     _, previous_img = cap.read()
