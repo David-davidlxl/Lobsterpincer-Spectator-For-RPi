@@ -10,7 +10,7 @@ Lobsterpincer Spectator (named after the "Lobster Pincer mate") is a chessboard 
 
 ![](README%20attachments/High-level%20diagram%20for%20overview.png)
 
-<iframe width="480" height="270" src="https://clipchamp.com/watch/yNkmsURUTsW/embed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![](https://markdown-videos.deta.dev/youtube/IExBi2OLkls)](https://youtu.be/IExBi2OLkls)
 
 ## Software Installation
 
@@ -177,7 +177,7 @@ Next, process the data and obtain the trained model as follows:
 
 The following video walks through the entire data-collection-and-model-training procedure (only 5 images are collected in this demo in order to keep the video brief; you want to collect hundreds of images in practice):
 
-<iframe width="525" height="225" src="https://clipchamp.com/watch/TyxyZutiII7/embed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![](https://markdown-videos.deta.dev/youtube/Yl_WZxMeNjk)](https://youtu.be/Yl_WZxMeNjk)
 
 ## Usage of Main Program
 
