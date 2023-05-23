@@ -193,7 +193,7 @@ To use the main program, "lobsterpincer_spectator.py" (in "LobsterpincerSpectato
 
 5. After the game, feel free to use "saved_game.pgn" for postgame analysis.
 
-The video in the [Overview](#overview) section demos the case where `BOARD_CORNERS` is set to `[[0, 0], [1199, 0], [1199, 1199], [0, 1199]]`. In this case, manual (predetermined) chessboard detection is used, which accelerates the move-registration process (each move takes about 10 seconds to register). If `BOARD_CORNERS` is set to `None`, automatic (neural-network-based) chessboard detection is used, and each moves takes about 12 seconds.
+The video in the [Overview](#overview) section demos the case where `BOARD_CORNERS` is set to `[[0, 0], [1199, 0], [1199, 1199], [0, 1199]]`. In this case, manual (predetermined) chessboard detection is used, which accelerates the move-registration process (each move takes about 10 seconds to register). If `BOARD_CORNERS` is set to `None`, automatic (neural-network-based) chessboard detection is used, and each moves takes about 12 seconds to register.
 
 ## Technical Details
 
