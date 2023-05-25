@@ -18,7 +18,7 @@ The only dependencies of “ChessPieceModelTraining” are [`numpy`](https://pyp
 
 The installation procedure (for "LobsterpincerSpectatorForRPi") below is tested to be fully functional for Raspberry Pi 4B.
 
-First, flash a Bullseye operating system onto Raspberry Pi’s micro SD card. You can do so by downloading, for example, “2023-02-21-raspios-bullseye-arm64.img.xz” from https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2023-02-22/ and flashing it with the official Raspberry Pi Imager.
+First, flash a 64-bit Bullseye operating system onto Raspberry Pi’s micro SD card. You can do so by downloading, for example, “2023-02-21-raspios-bullseye-arm64.img.xz” from https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2023-02-22/ and flashing it with the official Raspberry Pi Imager.
 
 
 Next, run the following commands in Raspberry Pi’s Terminal (you can copy, paste, and run all of them at once):
@@ -74,14 +74,14 @@ sudo wget -O /usr/bin/zram.sh https://raw.githubusercontent.com/novaspirit/rpi_z
 sudo nano /etc/rc.local
 ```
 
-(add `/usr/bin/zram.sh &` before the line `exit 0` and then save with <Ctrl+X>, <Y> and <Enter>)
+(add `/usr/bin/zram.sh &` before the line `exit 0` and then save with \<Ctrl+X>, \<Y> and \<Enter>)
 
 ```
 sudo chmod +x /usr/bin/zram.sh
 sudo nano /usr/bin/zram.sh
 ```
 
-(change `mem=$((  $totalmem * 1024 ))` to `mem=$((  $totalmem * 512 ))` and then save with <Ctrl+X>, <Y> and <Enter>)
+(change `mem=$((  $totalmem * 1024 ))` to `mem=$((  $totalmem * 512 ))` and then save with \<Ctrl+X>, \<Y> and \<Enter>)
 
 ```
 sudo reboot
@@ -111,15 +111,17 @@ Here are some additional recommended steps for configuring the VS Code on Raspbe
 
    3. Press “Ctrl + Shift + P,” type “Preferences: Open Keyboard Shortcuts,” and set your preferred keyboard shortcut for “Python: Run Python File.”
 
+      1. For better performance, however, I recommend closing VS Code and running the main program ("lobsterpincer_spectator.py") from Raspberry Pi's Terminal.
+
    4. (Optional) run `sudo -H pip3 install black` in Raspberry Pi Terminal. Then:
 
       1. Go to Settings -> Python Formatting Provider -> choose “black.”
 
       2. Go to Settings -> Editor: Format On Save -> check the box.
 
-   5. (Optional) install the Python style-check tool with `sudo -H pip3 install pydocstyle`.
+   5. (Optional) install the Python style-check tool (for docstrings) with `sudo -H pip3 install pydocstyle`.
 
-   6. (Optional) install the PGN extension (by Jake Boone) in VS Code.
+   6. (Optional) install the PGN extension (developed by Jake Boone) in VS Code.
 
 Another completely optional step, if you are planning to use the Chromium browser at all, is to open the Chromium browser and go to Settings -> System -> disable "Use hardware acceleration when available."
 
@@ -138,7 +140,7 @@ Now, before configuring the 8 LED lights ([purchase link](https://www.amazon.com
 For each of the 8 LED lights, connect the black wire to the ground strip of the breadboard and connect the red wire to their respective board pins on Raspberry Pi. The first LED should be connected to Raspberry Pi's board pin 11, second LED to board pin 13, third LED to board pin 15, fourth LED to board pin 16, fifth LED to board pin 18, sixth LED to board pin 22, seventh LED to board pin 36, and eighth LED to board pin 38.
 
 
-If you’re not familiar with wiring in general, you can see the example shown in the “Hardware setup - Make a circuit with your Raspberry Pi and the LED” section of [Control an LED with Raspberry Pi 4 and Python 3](https://roboticsbackend.com/raspberry-pi-control-led-python-3/#:~:text=Control%20an%20LED%20with%20Raspberry%20Pi%204%20and,Conclusion%20%E2%80%93%20Control%20LED%20from%20Raspberry%20Pi%20). In this example, the short leg of the LED is connected to the ground through the black wire and the long leg of the LED is connected to GPIO pin 17 (which corresponds to board pin 11) through the yellow wire. Note that this example uses the BCM numbering mode (`GPIO.BCM`) instead of the BOARD numbering mode (`GPIO.BOARD`) that the paragraph above assumes. For information on how these numbering modes differ, see [What is the difference between BOARD and BCM for GPIO pin numbering?](https://raspberrypi.stackexchange.com/questions/12966/what-is-the-difference-between-board-and-bcm-for-gpio-pin-numbering).
+If you are not familiar with wiring in general, you can see the example shown in the “Hardware setup - Make a circuit with your Raspberry Pi and the LED” section of [Control an LED with Raspberry Pi 4 and Python 3](https://roboticsbackend.com/raspberry-pi-control-led-python-3/#:~:text=Control%20an%20LED%20with%20Raspberry%20Pi%204%20and,Conclusion%20%E2%80%93%20Control%20LED%20from%20Raspberry%20Pi%20). In this example, the short leg of the LED is connected to the ground through the black wire and the long leg of the LED is connected to GPIO pin 17 (which corresponds to board pin 11) through the yellow wire. Note that this example uses the BCM numbering mode (`GPIO.BCM`) instead of the BOARD numbering mode (`GPIO.BOARD`) that the paragraph above assumes. For information on how these numbering modes differ, see [What is the difference between BOARD and BCM for GPIO pin numbering?](https://raspberrypi.stackexchange.com/questions/12966/what-is-the-difference-between-board-and-bcm-for-gpio-pin-numbering).
 
 ## Data Collection and Model Training
 
@@ -147,7 +149,7 @@ The "SqueezeNet1p1_all_last.onnx" chess-piece model (in "LobsterpincerSpectatorF
 
 First, collect labeled image data using "capture_and_label_img.py" (in "LobsterpincerSpectatorForRPi/lpspectator"):
 
-1. You will need an app on your phone that turns your phone into an IP camera. For Android, you can use [IP Webcam](https://play.google.com/store/apps/details?id=com.pas.webcam&pli=1). Make sure your phone and the computer (that will run "capture_and_label_img.py") are in the same Wi-Fi network, open the app, and edit the `IMAGE_SOURCE` variable in "capture_and_label_img.py" accordingly.
+1. You will need an app on your phone that turns your phone into an IP camera. For Android, you can use [IP Webcam](https://play.google.com/store/apps/details?id=com.pas.webcam&pli=1). Make sure your phone and the computer (that will run "capture_and_label_img.py") are in the same Wi-Fi network, open the app, and edit the `IMAGE_SOURCE` variable in "capture_and_label_img.py" accordingly. You will also need some kind of physical structure (such as a [phone holder](https://www.amazon.com/dp/B0B9N41MCS?ref=ppx_yo2ov_dt_b_product_details&th=1)) that you can use to hold the phone.
 
 2. Paste the PGN of the game to be played (during data collection) into "game_to_be_played.pgn" (in "LobsterpincerSpectatorForRPi").
 
@@ -163,7 +165,7 @@ Next, process the data and obtain the trained model as follows:
 
 2. Run "data_splitter.py" to randomize and split the data. The next two steps are optional (but somewhat recommended):
 
-   1. Delete the "ChessPieceModelTraining/DataSplitter/data/full" folder (to reduce the size of the "ChessPieceModelTraining/DataSplitter/data" folder).
+   1. Delete the "ChessPieceModelTraining/DataSplitter/data/full" folder (to reduce the size of the "ChessPieceModelTraining/DataSplitter/data" folder and thus reduce the time it takes to upload the data to Google Colab later).
    
    2. Discard a significant amount of the empty-square data in "ChessPieceModelTraining/DataSplitter/data/train/\_" and "ChessPieceModelTraining/DataSplitter/data/validation/\_" (such that, for example, the amount of the remaining empty-square data is comparable to that of the white-pawn data or black-pawn data).
 
@@ -173,7 +175,7 @@ Next, process the data and obtain the trained model as follows:
 
 5. Run the entire "SqueezeNet1p1_model_training.ipynb" notebook to perform transfer learning (which should take at least a couple of hours, but exactly how long it takes depends on how much image data you collected in the first place).
 
-6. Download the "SqueezeNet1p1_all_last.onnx" (and, optionally, "SqueezeNet1p1_all_last.h5") from Google Colab (in the "models" folder) to the "LobsterpincerSpectatorForRPi/livechess2fen/selected_models" directory.
+6. Download the "SqueezeNet1p1_all_last.onnx" (and, optionally, "SqueezeNet1p1_all_last.h5") from Google Colab (in the "models" folder) to the "LobsterpincerSpectatorForRPi/livechess2fen/selected_models" folder.
 
 The following video walks through the entire data-collection-and-model-training procedure (only 5 images under the same lighting condition are collected in this demo in order to keep the video brief; you want to collect hundreds of images under various lighting conditions in practice):
 
@@ -183,7 +185,7 @@ The following video walks through the entire data-collection-and-model-training 
 
 To use the main program, "lobsterpincer_spectator.py" (in "LobsterpincerSpectatorForRPi"):
 
-1. Connect Raspberry Pi to a Bluetooth speaker, open the app on your phone (that turns your phone into an IP camera), mount the phone on some kind of physical structure (such as a [phone holder](https://www.amazon.com/dp/B0B9N41MCS?ref=ppx_yo2ov_dt_b_product_details&th=1)), and edit the `IMAGE_SOURCE` variable in "capture_and_label_img.py" (see step 1 of the data-collection procedure above).
+1. Connect Raspberry Pi to a Bluetooth speaker, open the app on your phone (that turns your phone into an IP camera), mount the phone on some kind of physical structure, and edit the `IMAGE_SOURCE` variable in "capture_and_label_img.py" (see step 1 of the data-collection procedure above).
 
 2. Edit the `FULL_FEN_OF_STARTING_POSITION`, `A1_POS`, and `BOARD_CORNERS` variables in "capture_and_label_img.py" (feel free to edit other variables as well, but these three are generally the most relevant to the user).
 
@@ -217,7 +219,7 @@ There are a few things to note:
 
     The precise definition can be found in the `is_critical_moment()` function in "evaluate_position.py" (in "LobsterpincerSpectatorForRPi/lpspectator").
 
-5. Besides the ability to detect critical moments, the program also detects Harry the h-pawn and the Lobster Pincer mate. When Harry the h-pawn is pushed into (or further into) the opponent's territory (but not promoting) and the player pushing the h-pawn is not losing (a position is considered losing if its floating-point evaluation is at most -2), the "Look at Harry! Come on, Harry!" audio is played. When the Lobster Pincer mate happens, a special piece of audio is played as well.
+5. Besides the ability to detect critical moments, the program also detects Harry the h-pawn and the Lobster Pincer mate. When a player pushes Harry the h-pawn into (or further into) the opponent's territory (but Harry has not promoted into a queen yet) and the player pushing the h-pawn is not losing (a position is considered losing if its floating-point evaluation is at most -2), the "Look at Harry! Come on, Harry!" audio is played. When the Lobster Pincer mate happens, a special piece of audio is played as well.
 
 ## Acknowledgements
 
