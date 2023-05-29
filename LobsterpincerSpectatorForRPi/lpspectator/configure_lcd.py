@@ -23,13 +23,14 @@ def set_up_lcd():
         pin_rs=37,
         pin_e=35,
         pins_data=[33, 31, 29, 23],
+        compat_mode=True,
     )
 
     return lcd
 
 
-def configure_lcd(lcd: CharLCD, text_to_display: str):
-    """Configure the LCD to display an input text string.
+def display_text_on_lcd_screen(lcd: CharLCD, text_to_display: str):
+    """Display an input text string on the LCD screen.
 
     :param lcd: LCD variable used for LCD connection.
 
@@ -67,7 +68,7 @@ def display_last_move_on_lcd_screen(lcd: CharLCD, last_move_san: str):
     first_line = generate_full_line_string("Last move:")
     second_line = generate_full_line_string(last_move_san)
     text_to_display = first_line + second_line
-    configure_lcd(lcd, text_to_display)
+    display_text_on_lcd_screen(lcd, text_to_display)
 
 
 # def close_lcd_connection(lcd: CharLCD):  # This function is not needed if we use `GPIO.cleanup()`
