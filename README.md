@@ -1,8 +1,18 @@
 # Lobsterpincer Spectator: Real-Time Chessboard Processor
 
+- [Lobsterpincer Spectator: Real-Time Chessboard Processor](#lobsterpincer-spectator-real-time-chessboard-processor)
+  - [Overview](#overview)
+  - [Software Installation](#software-installation)
+  - [Hardware Configuration](#hardware-configuration)
+  - [Data Collection and Model Training](#data-collection-and-model-training)
+  - [Usage of Main Program](#usage-of-main-program)
+  - [Technical Details](#technical-details)
+  - [Acknowledgements](#acknowledgements)
+  - [Contact](#contact)
+
 ## Overview
 
-Lobsterpincer Spectator (named after the "Lobster Pincer mate") is a chessboard processor that gives players feedback in real time. This repository contains the Raspberry Pi version of the Lobsterpincer Spectator, which features the following functionalities:
+Lobsterpincer Spectator (named after the "Lobster Pincer mate") is a chessboard processor that gives players feedback in real time. This repository contains the Raspberry Pi version of the Lobsterpincer Spectator (there is another [repository for the Windows version](https://github.com/David-davidlxl/Lobsterpincer-Spectator-For-Win)), which features the following functionalities:
 
 - alert the players (via Bluetooth speaker) at critical moments of the game
 - inform the players (via LED lights) of the evaluation of the current position
