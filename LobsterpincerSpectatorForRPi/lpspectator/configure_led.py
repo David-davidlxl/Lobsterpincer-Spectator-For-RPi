@@ -1,4 +1,4 @@
-"""This module is responsible for configuring the LED lights for the Raspberry Pi."""
+"""This module is responsible for configuring the LED lights for Raspberry Pi."""
 
 
 import RPi.GPIO as GPIO
@@ -15,7 +15,7 @@ LED8 = 38
 
 
 def set_up_gpio_for_led():
-    """Set up the GPIO pins of the Raspberry Pi for LED configuration."""
+    """Set up the GPIO pins of Raspberry Pi for LED configuration."""
     GPIO.setmode(GPIO.BOARD)
     GPIO.setwarnings(False)
     GPIO.setup(LED1, GPIO.OUT)
@@ -29,7 +29,7 @@ def set_up_gpio_for_led():
 
 
 def turn_on_led_lights(num_of_lights_to_turn_on: int):
-    """Turn on a specific number of the LED lights connected to the Raspberry Pi.
+    """Turn on a specific number of the LED lights connected to Raspberry Pi.
 
     :param num_of_lights_to_turn_on: Number of LED lights to turn on (integer between 0 and 8).
     """
@@ -139,8 +139,5 @@ if __name__ == "__main__":
     for n in range(8, -1, -1):
         turn_on_led_lights(n)
         sleep(1)
-    # num_of_lights_to_turn_on = sys.argv[1]
-    # num_of_lights_to_turn_on = 3
-    # turn_on_led_lights(int(num_of_lights_to_turn_on))
 
     clean_up_gpio()

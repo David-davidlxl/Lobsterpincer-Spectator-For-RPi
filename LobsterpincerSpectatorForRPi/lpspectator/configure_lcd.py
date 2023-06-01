@@ -1,18 +1,19 @@
-"""This module is responsible for configuring the LCD for the Raspberry Pi.
+"""This module is responsible for configuring the LCD for Raspberry Pi.
 
 Note: the LCD screen is assumed to be able to display at most two lines of
 text with each line having a maximum of 16 characters.
 """
 
 
-from RPLCD import CharLCD
 import RPi.GPIO as GPIO
+
+from RPLCD import CharLCD
 
 
 def set_up_lcd():
     """Set up the LCD connection.
 
-    :return Variable of type `CharLCD` that can be used to
+    :return: Variable of type `CharLCD` that can be used to
         configure LCD and close the LCD connection later.
     """
     GPIO.setwarnings(False)

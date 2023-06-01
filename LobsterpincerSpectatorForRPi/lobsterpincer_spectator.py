@@ -1,15 +1,18 @@
 """This is the main program.
 
-Make sure to edit `IMAGE_SOURCE` in "capture__and_label_img.py" (in the "lpspectator"
-folder) before running this main program.
+Before running this main program, make sure to
 
-Also, make sure to set the terminal's directory to "LobsterpincerSpectatorForRPi"
-(the directory that directly contains this file) before running this main program.
+1) edit `IMAGE_SOURCE` in "capture_and_label_img.py" (in the "lpspectator"
+folder)
+
+2) set the terminal's directory to "LobsterpincerSpectatorForRPi"
+(the directory that directly contains this file)
 """
 
 
-import cv2
 import time
+
+import cv2
 import chess
 import chess.pgn
 
@@ -45,15 +48,15 @@ to the camera. Its value must be one of `"BL"` (bottom left), `"TR"`
 (top right), `"BR"` (bottom right), and `"TL"` (top left).
 """
 
-# BOARD_CORNERS = [
-#     [0, 0],
-#     [1199, 0],
-#     [1199, 1199],
-#     [0, 1199],
-# ]  # This corresponds to manual, predetermined chessboard detection
-BOARD_CORNERS = (
-    None  # This corresponds to automatic, neural-network-based chessboard detection
-)
+BOARD_CORNERS = [
+    [0, 0],
+    [1199, 0],
+    [1199, 1199],
+    [0, 1199],
+]  # This corresponds to manual, predetermined chessboard detection
+# BOARD_CORNERS = (
+#     None  # This corresponds to automatic, neural-network-based chessboard detection
+# )
 """Coordinates of the chessboard corners in the captured image.
 
 This parameter specifies the location of the chessboard in the captured
@@ -122,7 +125,7 @@ PRINT_BEST_MOVES_IN_TERMINAL = False
 evaluating each position."""
 
 TIME_BETWEEN_CONSECUTIVE_IMG_CAPTURES = (
-    1  # This means we capture 1 image per second when tuning the sliders
+    1  # This means we capture 1 image per second when tuning the slider values
 )
 """Parameter determining image-capture frequency during slider-value tuning."""
 

@@ -8,9 +8,9 @@ import chess.engine
 def initialize_engine() -> chess.engine.SimpleEngine:
     r"""Initialize the Stockfish engine.
 
-    Note: for Raspberry Pi, make sure to first run
+    Note: make sure to first run
     `cd Desktop/LobsterpincerSpectatorForRPi/Stockfish/src/; chmod 777 stockfish`
-    in the terminal to modify the permission of the executable.
+    in Raspberry Pi's Terminal to modify the permission of the executable.
     """
     try:
         engine = chess.engine.SimpleEngine.popen_uci("Stockfish/src/stockfish")
