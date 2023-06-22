@@ -1,4 +1,6 @@
-<h1 align="center">Lobsterpincer Spectator: Real-Time Chessboard Processor</h1>
+<h1 align="center">Lobsterpincer Spectator:
+
+Real-Time Chessboard Processor</h1>
 
 <p align="center">
 <a href="https://github.com/David-davidlxl/Lobsterpincer-Spectator-For-RPi/blob/main/LICENSE"><img alt="License: MIT" src="https://black.readthedocs.io/en/stable/_static/license.svg"></a>
