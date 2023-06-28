@@ -28,9 +28,7 @@ Lobsterpincer Spectator (named after the "Lobster Pincer mate") is a chessboard 
 
 ![](README%20attachments/High-level%20diagram%20for%20overview.png)
 
-[![](https://markdown-videos.deta.dev/youtube/IExBi2OLkls)](https://youtu.be/IExBi2OLkls)
-
-[![Watch the video](https://img.youtube.com/vi/IExBi2OLkls/maxresdefault.jpg)](https://youtu.be/IExBi2OLkls)
+[![](https://markdown-videos.vercel.app/youtube/IExBi2OLkls?width=960&height=540)](https://youtu.be/IExBi2OLkls)
 
 ## Software Installation
 
@@ -187,7 +185,7 @@ The following video walks through the entire data-collection-and-model-training 
 
 [![](https://markdown-videos.deta.dev/youtube/Yl_WZxMeNjk)](https://youtu.be/Yl_WZxMeNjk)
 
-[![Watch the video](https://img.youtube.com/vi/Yl_WZxMeNjk/maxresdefault.jpg)](https://youtu.be/Yl_WZxMeNjk)
+[![](https://markdown-videos.vercel.app/youtube/Yl_WZxMeNjk?width=960&height=540)](https://youtu.be/Yl_WZxMeNjk)
 
 ## Usage of Main Program
 
