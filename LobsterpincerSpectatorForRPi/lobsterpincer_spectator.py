@@ -8,6 +8,9 @@ Before running this main program, make sure to
 2) run `cd Desktop/LobsterpincerSpectatorForRPi/Stockfish/src/;
 chmod 777 stockfish` in Raspberry Pi's Terminal to modify the permission
 of the executable
+(this needs to be done only before running this main program for the
+first time; it does not need to be rerun for subsequent uses of the main
+program)
 
 3) set working directory to "LobsterpincerSpectatorForRPi"
 (the directory that directly contains this file)

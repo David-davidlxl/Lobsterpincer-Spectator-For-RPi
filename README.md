@@ -104,7 +104,8 @@ sudo chmod 755 ./OpenCV-4-8-0.sh
 ./OpenCV-4-8-0.sh
 ```
 
-Finally, download the "LobsterpincerSpectatorForRPi" folder onto Raspberry Pi's Desktop and then run the following code in Raspberry Pi's Terminal:
+Finally, download the "LobsterpincerSpectatorForRPi" folder onto Raspberry Pi's Desktop, extract
+"Stockfish.zip" into the "LobsterpincerSpectatorForRPi" folder, and then run the following code in Raspberry Pi's Terminal:
 
 ```
 cd Desktop/LobsterpincerSpectatorForRPi/Stockfish/src/
