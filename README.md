@@ -18,7 +18,7 @@ Real-Time Chessboard Processor</h1>
 
 ## Overview
 
-Lobsterpincer Spectator (named after the "Lobster Pincer mate") is a chessboard processor that gives players feedback in real time. There are three versions of the Lobsterpincer Spectator: [Windows standalone version](https://github.com/David-davidlxl/Lobsterpincer-Spectator-For-Win), Raspberry Pi's standalone version, and [Windows and Raspberry Pi's combination version](https://github.com/David-davidlxl/Lobsterpincer-Spectator-For-Win-RPi-Combo). This repository contains the Raspberry Pi's standalone version of the Lobsterpincer Spectator, which has the following features:
+Lobsterpincer Spectator (named after the "Lobster Pincer mate") is a chessboard processor that gives players feedback in real time. There are three versions of the Lobsterpincer Spectator: [Windows standalone version](https://github.com/David-davidlxl/Lobsterpincer-Spectator-For-Win), Raspberry Pi's standalone version, and [Windows and Raspberry Pi's combination version](https://github.com/David-davidlxl/Lobsterpincer-Spectator-For-Win-RPi-Combo). This repository contains Raspberry Pi's standalone version of the Lobsterpincer Spectator, which has the following features:
 
 - register each move in less than 12 seconds with manual chessboard detection (with Raspberry Pi 4B)
   - register each move in less than 18 seconds with automatic chessboard detection (with Raspberry Pi 4B)
@@ -36,7 +36,7 @@ The only dependencies of "ChessPieceModelTraining" are [`numpy`](https://pypi.or
 
 The installation procedure (for "LobsterpincerSpectatorForRPi") below has been tested to be fully functional for Raspberry Pi 4B.
 
-First, flash a 64-bit Bullseye operating system onto Raspberry Pi's micro SD card. You can do so by downloading, for example, "2023-02-21-raspios-bullseye-arm64.img.xz" from https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2023-02-22/ and flashing it with the official Raspberry Pi Imager.
+First, flash a 64-bit Bullseye operating system onto Raspberry Pi's micro SD card. You can do so by downloading, for example, "2023-05-03-raspios-bullseye-arm64.img.xz" from https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2023-05-03/ and flashing it with the official Raspberry Pi Imager.
 
 Next, run the following commands in Raspberry Pi's Terminal (you can copy, paste, and run all of them at once):
 
@@ -59,7 +59,7 @@ sudo -H pip3 install gdown
 gdown https://drive.google.com/uc?id=1G2P-FaHAXJ-UuQAQn_0SYjNwBu0aShpd
 sudo -H pip3 install tensorflow-2.10.0-cp39-cp39-linux_aarch64.whl
 
-sudo -H pip3 install onnxruntime
+sudo -H pip3 install onnxruntime==1.15.1
 sudo -H pip3 install matplotlib
 sudo -H pip3 install pyclipper
 sudo -H pip3 install scikit-learn
@@ -96,12 +96,12 @@ sudo nano /usr/bin/zram.sh
 sudo reboot
 ```
 
-Then go to [Install OpenCV 4.5 on Raspberry 64 OS](https://qengineering.eu/install-opencv-4.5-on-raspberry-64-os.html), configure the GPU memory according to the "GPU memory" section, and run the installation script provided in the "Installation script" section to install OpenCV:
+Then go to [Install OpenCV on Raspberry 64 OS](https://qengineering.eu/install-opencv-on-raspberry-64-os.html), configure the GPU memory according to the "GPU memory" section, and run the installation script provided in the "Installation script" section to install OpenCV:
 
 ```
-wget https://github.com/Qengineering/Install-OpenCV-Raspberry-Pi-64-bits/raw/main/OpenCV-4-5-5.sh
-sudo chmod 755 ./OpenCV-4-5-5.sh
-./OpenCV-4-5-5.sh
+wget https://github.com/Qengineering/Install-OpenCV-Raspberry-Pi-64-bits/raw/main/OpenCV-4-8-0.sh
+sudo chmod 755 ./OpenCV-4-8-0.sh
+./OpenCV-4-8-0.sh
 ```
 
 Finally, download the "LobsterpincerSpectatorForRPi" folder onto Raspberry Pi's Desktop and then run the following code in Raspberry Pi's Terminal:
@@ -121,11 +121,35 @@ Here are some additional recommended steps for configuring the VS Code on Raspbe
 
       1. For better performance, however, I recommend closing VS Code and running the main program ("lobsterpincer_spectator.py") from Raspberry Pi's Terminal.
 
-   4. (Optional) run `sudo -H pip3 install black` in Raspberry Pi Terminal. Then:
+   4. (Optional) install the Black Formatter extension (developed by Microsoft), open "settings.json," and add the following into its content:
 
-      1. Go to Settings -> Python Formatting Provider -> choose "black."
-
-      2. Go to Settings -> Editor: Format On Save -> check the box.
+      ```
+      "[python]": {
+         "editor.defaultFormatter": "ms-python.black-formatter",
+         "editor.formatOnSave": true
+      },
+      "black-formatter.args": [
+         "--line-length",
+         "79"
+      ],
+      "editor.tokenColorCustomizations": {
+         "textMateRules": [
+            {
+                  "scope": [
+                     "string.quoted.docstring", // This includes Python docstrings
+                  ],
+                  "settings": { // Set your desired color for Python docstrings
+                     "foreground": "#0d9419",
+                  }
+            }
+         ]
+      },
+      "editor.rulers": [
+         72,
+         79
+      ],
+      "editor.formatOnSave": true,
+      ```
 
    5. (Optional) install the Python style-check tool (for docstrings) with `sudo -H pip3 install pydocstyle`.
 
