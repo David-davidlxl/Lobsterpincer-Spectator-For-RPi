@@ -59,7 +59,7 @@ sudo -H pip3 install gdown
 gdown https://drive.google.com/uc?id=1G2P-FaHAXJ-UuQAQn_0SYjNwBu0aShpd
 sudo -H pip3 install tensorflow-2.10.0-cp39-cp39-linux_aarch64.whl
 
-sudo -H pip3 install onnxruntime==1.15.1
+sudo -H pip3 install onnxruntime
 sudo -H pip3 install matplotlib
 sudo -H pip3 install pyclipper
 sudo -H pip3 install scikit-learn
